@@ -78,7 +78,6 @@ while(True):
 
     lcd.clear()
     lcd.display_line(uptime, 1, "c", 16)
-    #line = f"{load:<7}{mem:>7}"
     lcd.display_line(load, 2, "c", 16)
 
     sleep(15)
