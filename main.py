@@ -85,13 +85,13 @@ while(True):
 
     # query the pihole api for info
     data = get_summary()
-    listed_domains = str(data["gravity"]["domains_being_blocked"])
-    queries_today = str(data["queries"]["total"])
-    queries_forward = str(data["queries"]["forwarded"])
-    ads_blocked = str(data["queries"]["blocked"])
-    ads_percent = str(round(data["queries"]["percent_blocked"], 2)) + "%"
-    unique_clients = str(data["clients"]["active"])
-    total_clients = str(data["clients"]["total"])
+    listed_domains = str(f'{data["gravity"]["domains_being_blocked"]:,}').replace(",", ".")
+    queries_today = str(f'{data["queries"]["total"]:,}').replace(",", ".")
+    queries_forward = str(f'{data["queries"]["forwarded"]:,}').replace(",", ".")
+    ads_blocked = str(f'{data["queries"]["blocked"]:,}').replace(",", ".")
+    ads_percent = str(round(data["queries"]["percent_blocked"], 2)).replace(".", ",") + "%"
+    unique_clients = str(f'{data["clients"]["active"]:,}').replace(",", ".")
+    total_clients = str(f'{data["clients"]["total"]:,}').replace(",", ".")
 
     ga_raw = data["gravity"]["last_update"]
     ga_delta = datetime.now() - datetime.fromtimestamp(ga_raw)
